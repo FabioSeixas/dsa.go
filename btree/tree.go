@@ -3,7 +3,6 @@ package btree
 import (
 	utils "fabioseixas/dsa/utils"
 	"fmt"
-	"slices"
 )
 
 type Node struct {
@@ -21,12 +20,20 @@ func (t *BinaryTree) Find(v int) *Node {
 	queue := []*Node{t.value}
 
 	for queue[0] != nil {
-		if queue[0].value == v {
+		current := queue[0]
+		if current.value == v {
 			return queue[0]
 		}
 
-		queue = append(queue, queue[0].left, queue[0].right)
-		queue = slices.Delete(queue, 0, 1)
+		if current.value > v {
+			queue = append(queue, queue[0].left)
+		}
+
+		if current.value < v {
+			queue = append(queue, queue[0].right)
+		}
+
+		queue = queue[1:]
 	}
 
 	return nil
@@ -69,7 +76,7 @@ func (t *BinaryTree) GetList() []int {
 	return result
 }
 
-func BuildBinaryTree(input []utils.NilInt) *BinaryTree {
+func Build(input []utils.NilInt) *BinaryTree {
 
 	// todo: accept any list of integers
 	// for now, only works with lists that perfect represents binary tree (BSF)
