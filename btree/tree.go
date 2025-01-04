@@ -2,7 +2,6 @@ package btree
 
 import (
 	utils "fabioseixas/dsa/utils"
-	"fmt"
 )
 
 type Node struct {
@@ -80,8 +79,6 @@ func Build(input []utils.NilInt) *BinaryTree {
 
 	// todo: accept any list of integers
 	// for now, only works with lists that perfect represents binary tree (BSF)
-
-	fmt.Println(input)
 
 	tree := &BinaryTree{&Node{}}
 	tree.value.value = input[0].Value

@@ -4,7 +4,7 @@
 
 - [x] build binary tree from a list (BSF ordered)
 - [x] get items list (BSF ordered) from a binary tree
-- [ ] Find an item on a BinaryTree (nil if does not exist)
+- [x] Find an item on a BinaryTree (nil if does not exist)
 - [ ] Find the level of an item on a BinaryTree (nil if does not exist)
 - [ ] build binary tree from a list (DSF ordered)
 - [ ] get items list (DSF ordered) from a binary tree

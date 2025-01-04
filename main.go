@@ -16,6 +16,6 @@ func main() {
 		{Value: 5, Null: false},
 	}
 
-	btree.BuildBinaryTree(x)
+	btree.Build(x)
 
 }
