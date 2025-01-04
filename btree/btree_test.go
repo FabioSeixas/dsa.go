@@ -77,3 +77,63 @@ func TestFind(t *testing.T) {
 		}
 	}
 }
+
+func TestFindWithLevel(t *testing.T) {
+	tests := []struct {
+		input    int
+		expected int
+	}{
+		{input: 4, expected: 2},
+		{input: 9, expected: 2},
+		{input: 3, expected: 1},
+		{input: 7, expected: 1},
+		{input: 5, expected: 0},
+	}
+
+	btree := &BinaryTree{
+		value: &Node{
+			5,
+			&Node{
+				3,
+				&Node{2, nil, nil},
+				&Node{4, nil, nil},
+			},
+			&Node{
+				7,
+				&Node{6, nil, nil},
+				&Node{9, nil, nil},
+			},
+		},
+	}
+
+	for _, test := range tests {
+		gotNode, gotLevel := btree.FindWithLevel(test.input)
+		if gotLevel != test.expected {
+			t.Errorf("Find(%v) = %v; want %v", test.input, gotLevel, test.expected)
+		}
+
+		if gotNode == nil {
+			t.Errorf("Find(%v) = nil; want != nil", test.input)
+		}
+	}
+
+	testNotFound := []struct {
+		input    int
+		expected struct {
+			node  *Node
+			level int
+		}
+	}{
+		{input: 10, expected: struct {
+			node  *Node
+			level int
+		}{node: nil, level: 0}},
+	}
+
+	for _, test := range testNotFound {
+
+		if gotNode, gotLevel := btree.FindWithLevel(test.input); gotLevel != test.expected.level || gotNode != nil {
+			t.Errorf("Find(%v) = %v, %v; want %v, %v", test.input, gotNode, gotLevel, test.expected.node, test.expected.level)
+		}
+	}
+}

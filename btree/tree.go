@@ -14,14 +14,20 @@ type BinaryTree struct {
 	value *Node
 }
 
-func (t *BinaryTree) Find(v int) *Node {
+func (t *BinaryTree) search(v int) (*Node, int) {
 
 	queue := []*Node{t.value}
 
+	level := -1
+
 	for queue[0] != nil {
+
+		level++
+
 		current := queue[0]
+
 		if current.value == v {
-			return queue[0]
+			return queue[0], level
 		}
 
 		if current.value > v {
@@ -35,7 +41,16 @@ func (t *BinaryTree) Find(v int) *Node {
 		queue = queue[1:]
 	}
 
-	return nil
+	return nil, 0
+}
+
+func (t *BinaryTree) Find(v int) *Node {
+	node, _ := t.search(v)
+	return node
+}
+
+func (t *BinaryTree) FindWithLevel(v int) (*Node, int) {
+	return t.search(v)
 }
 
 // TODO
