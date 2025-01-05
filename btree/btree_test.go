@@ -23,7 +23,7 @@ func TestBuild(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		btree := Build(test.input)
+		btree := BuildFromBSF(test.input)
 		got := btree.GetList()
 		if slices.Compare(got, test.expected) != 0 {
 			t.Errorf("BinaryTree(%v) = %v; want %v", test.input, got, test.expected)

@@ -90,7 +90,7 @@ func (t *BinaryTree) GetList() []int {
 	return result
 }
 
-func Build(input []utils.NilInt) *BinaryTree {
+func BuildFromBSF(input []utils.NilInt) *BinaryTree {
 
 	// todo: accept any list of integers
 	// for now, only works with lists that perfect represents binary tree (BSF)
