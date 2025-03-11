@@ -10,3 +10,7 @@
 - [ ] get items list (DSF ordered) from a binary tree
 - [ ] add new item to an existing Binary Tree (rebalance if needed)
 - [ ] remove an item from an existing Binary Tree (rebalance if needed)
+
+### Graph
+
+- [x] validate cyclic
